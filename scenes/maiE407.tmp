@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqj1sgxypg88k"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_4wcdr"]
+[ext_resource type="Texture2D" uid="uid://yc63psll41gp" path="res://assets/bg.png" id="1_mtcuy"]
+[ext_resource type="PackedScene" uid="uid://dgsx75p5uayb0" path="res://scenes/plane.tscn" id="3_mqq0y"]
+[ext_resource type="Script" path="res://scenes/cursor.gd" id="4_begwt"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4wcdr")
+
+[node name="Cursor" type="Node" parent="."]
+script = ExtResource("4_begwt")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(400, 240)
+texture = ExtResource("1_mtcuy")
+
+[node name="Plane" parent="." instance=ExtResource("3_mqq0y")]

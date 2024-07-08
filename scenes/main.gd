@@ -1,6 +1,6 @@
-extends Node;
+extends Node
 
-var game_running: bool;
+var game_running: bool
 var game_over: bool
 var scroll
 var score
