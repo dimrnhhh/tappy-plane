@@ -1,19 +1,19 @@
 extends CharacterBody2D
 
-const GRAVITY: int = 1000;
-const MAX_VEL: int = 600;
-const PLANE_SPEED: int = -500;
-var flying: bool = false;
-var falling: bool = false;
-const START_POS = Vector2(250, 50);
+const GRAVITY: int = 1000
+const MAX_VEL: int = 600
+const PLANE_SPEED: int = -500
+var flying: bool = false
+var falling: bool = false
+const START_POS = Vector2(100, 250)
 
 func _ready():
 	reset()
 
 func reset():
-	falling = false;
-	flying = false;
-	position = START_POS;
+	falling = false
+	flying = false
+	position = START_POS
 	set_rotation(0)
 
 func _physics_process(delta):
