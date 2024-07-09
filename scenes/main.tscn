@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqj1sgxypg88k"]
+[gd_scene load_steps=9 format=3 uid="uid://cqj1sgxypg88k"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_4wcdr"]
 [ext_resource type="Texture2D" uid="uid://yc63psll41gp" path="res://assets/bg.png" id="1_mtcuy"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dgsx75p5uayb0" path="res://scenes/plane.tscn" id="3_mqq0y"]
 [ext_resource type="Script" path="res://scenes/cursor.gd" id="4_begwt"]
 [ext_resource type="PackedScene" uid="uid://bpcp27gagih2j" path="res://scenes/ground.tscn" id="5_vkrin"]
+[ext_resource type="FontFile" uid="uid://b0phcbxdu3rx2" path="res://assets/kenvector_future.ttf" id="7_j6ejh"]
+[ext_resource type="PackedScene" uid="uid://drkf7v38g7g8h" path="res://scenes/game_over.tscn" id="8_mxw01"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_4wcdr")
@@ -27,5 +29,23 @@ position = Vector2(0, 425)
 [node name="RockTimer" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("7_j6ejh")
+theme_override_font_sizes/font_size = 14
+text = "Score: 0"
+
+[node name="GameOver" parent="." instance=ExtResource("8_mxw01")]
+
 [connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
+[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]

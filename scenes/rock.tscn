@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ff1k0lgpurck"]
+[gd_scene load_steps=5 format=3 uid="uid://ff1k0lgpurck"]
 
 [ext_resource type="Script" path="res://scenes/rock.gd" id="1_bjn8e"]
 [ext_resource type="Texture2D" uid="uid://c01gdrmcbyqdf" path="res://assets/rockDown.png" id="1_pfilp"]
 [ext_resource type="Texture2D" uid="uid://38dkoqw3rla6" path="res://assets/rockUp.png" id="2_qh1ye"]
 
-[node name="Rock" type="Area2D"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kj86v"]
+a = Vector2(343, -45)
+b = Vector2(104, 135)
+
+[node name="Rock" type="Area2D" groups=["rocks"]]
 position = Vector2(198, 9)
 script = ExtResource("1_bjn8e")
 
@@ -28,4 +32,10 @@ position = Vector2(88.625, 279.25)
 scale = Vector2(1.25, 1.25)
 polygon = PackedVector2Array(-54, 115, 53, 118, 46, 59, 39, 55, 33, -18, 26, -17, 17, -118, 8, -120, -14, 1, -27, 13, -36.9061, 50.4236)
 
+[node name="ScoreArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+shape = SubResource("SegmentShape2D_kj86v")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]

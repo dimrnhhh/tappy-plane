@@ -23,6 +23,9 @@ func new_game():
 	game_over = false
 	score = 0
 	scroll = 0
+	$ScoreLabel.text = "SCORE: " + str(score)
+	$GameOver.hide()
+	get_tree().call_group("rocks", "queue_free")
 	rocks.clear()
 	generate_rocks()
 	$Plane.reset();
@@ -62,9 +65,14 @@ func generate_rocks():
 	rock.position.x = screen_size.x + ROCK_DELAY
 	rock.position.y = (screen_size.y - ground_height) / 2  + randi_range(-ROCK_RANGE, ROCK_RANGE)
 	rock.hit.connect(rock_hit)
+	rock.scored.connect(scored)
 	add_child(rock)
 	rocks.append(rock)
-	
+
+func scored():
+	score += 1
+	$ScoreLabel.text = "SCORE: " + str(score)
+
 func check_stop():
 	if $Plane.position.y < 0:
 		$Plane.falling = true
@@ -73,6 +81,7 @@ func check_stop():
 func stop_game():
 	$RockTimer.stop()
 	$Plane.flying = false
+	$GameOver.show()
 	game_running = false
 	game_over = true
 	
@@ -80,7 +89,12 @@ func rock_hit():
 	$Plane.falling = true
 	stop_game()
 
-
 func _on_ground_hit():
 	$Plane.falling = true
 	stop_game()
+
+func _on_game_over_restart():
+	if game_running:
+		pass
+	else:
+		new_game()

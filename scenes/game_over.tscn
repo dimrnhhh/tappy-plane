@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://drkf7v38g7g8h"]
+
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_ol2f0"]
+[ext_resource type="Texture2D" uid="uid://b8kk666rxf154" path="res://assets/gameOver.png" id="1_u2ddf"]
+[ext_resource type="FontFile" uid="uid://b0phcbxdu3rx2" path="res://assets/kenvector_future.ttf" id="3_04xrk"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_ol2f0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(407, 196)
+texture = ExtResource("1_u2ddf")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = 0.5
+offset_right = 93.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_04xrk")
+theme_override_font_sizes/font_size = 16
+text = "CLICK TO RESTART"
