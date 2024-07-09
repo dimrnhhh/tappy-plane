@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpcp27gagih2j"]
+
+[ext_resource type="Texture2D" uid="uid://bw3lqr251e5p4" path="res://assets/ground.png" id="1_k8ulj"]
+[ext_resource type="Script" path="res://scenes/ground.gd" id="1_wcxw1"]
+
+[node name="Ground" type="Area2D"]
+script = ExtResource("1_wcxw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(400, 31.75)
+scale = Vector2(0.990099, 0.992958)
+texture = ExtResource("1_k8ulj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1200, 31.7501)
+scale = Vector2(0.990099, 0.992958)
+texture = ExtResource("1_k8ulj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -413)
+polygon = PackedVector2Array(0, 445, 33, 443, 41, 450, 89, 454, 133, 443, 156, 417, 247, 413, 304, 436, 347, 437, 371, 421, 433, 422, 466, 453, 506, 453, 530, 463, 568, 463, 592, 437, 630, 433, 651, 413, 737, 410, 756, 435, 800, 446, 834, 444, 841, 451, 890, 455, 933, 443, 956, 417, 1048, 413, 1105, 437, 1147, 438, 1169, 422, 1233, 423, 1265, 454, 1304, 452, 1329, 464, 1368, 464, 1393, 437, 1430, 433, 1451, 413, 1537, 410, 1556, 434, 1599, 445, 1599, 479, 0, 480)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
