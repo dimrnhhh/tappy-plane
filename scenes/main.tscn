@@ -22,9 +22,10 @@ texture = ExtResource("1_mtcuy")
 
 [node name="Ground" parent="." instance=ExtResource("5_vkrin")]
 z_index = 1
-position = Vector2(0, 413)
+position = Vector2(0, 425)
 
 [node name="RockTimer" type="Timer" parent="."]
 wait_time = 1.5
 
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
 [connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]

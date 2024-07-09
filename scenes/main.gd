@@ -11,7 +11,7 @@ var screen_size: Vector2i
 var ground_height: int
 var rocks: Array
 const ROCK_DELAY: int = 200
-const ROCK_RANGE: int = 100
+const ROCK_RANGE: int = 80
 
 func _ready():
 	screen_size = get_window().size
@@ -36,6 +36,7 @@ func _input(event):
 				else:
 					if $Plane.flying:
 						$Plane.flap()
+						check_stop()
 
 func start_game():
 	game_running = true
@@ -63,6 +64,23 @@ func generate_rocks():
 	rock.hit.connect(rock_hit)
 	add_child(rock)
 	rocks.append(rock)
+	
+func check_stop():
+	if $Plane.position.y < 0:
+		$Plane.falling = true
+		stop_game()
 
+func stop_game():
+	$RockTimer.stop()
+	$Plane.flying = false
+	game_running = false
+	game_over = true
+	
 func rock_hit():
-	pass
+	$Plane.falling = true
+	stop_game()
+
+
+func _on_ground_hit():
+	$Plane.falling = true
+	stop_game()

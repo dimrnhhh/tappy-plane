@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const GRAVITY: int = 1000
 const MAX_VEL: int = 600
-const PLANE_SPEED: int = -500
+const PLANE_SPEED: int = -400
 var flying: bool = false
 var falling: bool = false
 const START_POS = Vector2(100, 250)
